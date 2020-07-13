@@ -1,0 +1,27 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<style type="text/css">
+    li,footer
+    {
+       color: black;
+       font-size: 20px;
+        font-family: "Times New Roman", Times, serif;
+    }
+</style>
+    <h2>Categories</h2>
+
+    <ul>
+    	{% for i in ii %}
+    	<li>
+
+    		<a href="/lists/{{ i }}">{{ i }}</a>
+
+    	</li>
+    	{% endfor %}
+    </ul>
+       <footer>
+     DESIGNED BY NAVEEN😎 
+        </footer>
+ 
+{% endblock %}

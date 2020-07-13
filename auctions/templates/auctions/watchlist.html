@@ -1,0 +1,40 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<style type="text/css">
+    li,footer
+    {
+       color: black;
+       font-size: 20px;
+        font-family: "Times New Roman", Times, serif;
+    }
+</style>
+    <h2>Your Watchlist-></h2>
+    <h3>{{ wwttf }}</h3>
+
+    <ul>
+    	{% for t in wwtt %}
+    	<li><div class="tt">
+            {% for e in t %}
+    	 {{ e.title1 }}<BR>
+        OWNER:{{ e.usrr }}<br>
+    		DESCRIPTION: {{ e.desc }}<BR>
+    		CURRENT BID(in Rs): {{ e.bid }}<BR>
+    		CATEGORY: {{ e.cat }}<BR>
+            CREATED ON:{{ e.crt }}<br>
+    		 {% if e.lnk %}
+             <img src="{{ e.lnk }}"><BR>
+             {% else %}
+             IMAGE:No data.<br>
+             {% endif %}
+    		 
+    		 <a href="/lst/{{e.title1}}">Bid</a>
+{% endfor %}
+    	</li>
+    	{% endfor %}</div>
+    </ul>
+       <footer>
+     DESIGNED BY NAVEEN😎 
+        </footer>
+ 
+{% endblock %}

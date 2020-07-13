@@ -1,0 +1,40 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<style type="text/css">
+	li,footer
+	{
+       color: black;
+       font-size: 20px;
+        font-family: "Times New Roman", Times, serif;
+	}
+</style>
+    <h2>Listings</h2>
+
+    <ul><div class="tt">
+    	{% for u in uu %}
+    	<li>
+
+    	 {{ u.title1 }}<BR>
+        OWNER:{{ u.usrr }}<br>
+    		DESCRIPTION: {{ u.desc }}<BR>
+    		CURRENT BID(in Rs): {{ u.bid }}<BR>
+    		CATEGORY: {{ u.cat }}<BR>
+    		CREATED ON:{{ u.crt }}<br>
+    		 {% if u.lnk %}
+    		 <img src="{{ u.lnk }}"><BR>
+    		 {% else %}
+    		 IMAGE:No data.<br>
+    		 {% endif %}
+    		 
+    		 <a href="/lst/{{u.id}}">Bid</a>
+
+
+    	</li>
+    	{% endfor %}</div>
+    </ul>
+       <footer>
+     DESIGNED BY NAVEEN😎 
+        </footer>
+ 
+{% endblock %}

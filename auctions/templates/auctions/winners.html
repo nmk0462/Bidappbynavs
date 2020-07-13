@@ -1,0 +1,40 @@
+
+{% extends "auctions/layout.html" %}
+{% load static %}
+{% block body %}
+<style type="text/css">
+	li,footer
+	{
+       color: black;
+       font-size: 20px;
+        font-family: "Times New Roman", Times, serif;
+	}
+</style>
+    <h2>Bids you won:)</h2>
+  &nbsp &nbsp<h3>{{ qqq }}</h3>
+    <ul><div class="tt">
+    	{% for q in qq %}
+    	<li>
+             
+    	{{ q.tll }}<BR>
+       
+
+    		DESCRIPTION: {{ q.desc1 }}<BR>
+    		CURRENT BID(in Rs): {{ q.bidd1 }}<BR>
+    		CATEGORY: {{ q.cat1 }}<BR>
+    		{% if q.lnk %}
+              <img src="{{ q.lnk }}"><BR>
+             {% else %}
+             IMAGE:No data.<br>
+             {% endif %}
+    		 
+    		 
+             
+    	</li>
+    	{% endfor %}</div>
+    </ul>
+       <footer>
+     DESIGNED BY NAVEEN😎 
+        </footer>
+ 
+{% endblock %}

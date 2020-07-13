@@ -1,0 +1,76 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<style>
+	input
+	{
+		width: 50%;
+	display: block;
+	
+	margin-bottom: 15px;
+	font-size: 20px;
+	border: 2px solid #888;
+	border-bottom: 5px solid #888;
+	background-color: #fff;
+	
+	box-sizing: border-box;
+	
+	background:#ffffff28;
+	border:1px solid white;
+	padding:10px 20px;
+	color: black;
+	outline: none;
+	margin: 10px 0;
+	border-radius: 6px;
+	}
+	input:focus{
+	outline: none;
+	border: 2px solid #555;
+	border-bottom: 5px solid #555;
+}
+button
+{
+	width:10%;
+	padding:2px;
+	margin-top: 10px;
+	background-color: black;
+	color: #03e9f4;
+	display: inline-block;
+	border:none;
+	transition: 0.5s;
+	letter-spacing: 4px;
+	border-radius: 50px;
+	border:50px;
+	border-color: red;
+	
+}
+button:hover
+{
+	background: #03e9f4;
+	color: #050801;
+	box-shadow: 0 0 5px #03e9f4,
+	            0 0 25px #03e9f4,
+	            0 0 50px #03e9f4,
+	            0 0 200px #03e9f4
+}
+footer
+{
+	 color: black;
+       font-size: 20px;
+        font-family: "Times New Roman", Times, serif;
+}</style>
+    <h2>Enter the details</h2>
+    <form action="{% url 'created' %}" method="POST">
+    	{% csrf_token %}
+    	
+    	<input type="text" name="title1" placeholder="Enter the title">
+    	<input type="text" name="desc" placeholder="Enter the description" >
+    	<input type="number" name="bid" placeholder="Enter the starting bid">
+    	<input type="text" name="cat" placeholder="Catagory">
+    	<input type="text" name="lnk" placeholder="Link of the image(Optional)">
+    	<button>Create Listing</button>
+    </form>   <footer>
+     DESIGNED BY NAVEEN😎 
+        </footer>
+ 
+{% endblock %}

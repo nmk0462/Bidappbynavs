@@ -1,0 +1,37 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<style type="text/css">
+    li,footer
+    {
+       color: black;
+       font-size: 20px;
+        font-family: "Times New Roman", Times, serif;
+    }
+</style>
+    <h2>Bid closed</h2>
+
+    <ul>
+    	<div class="tt">
+    	<li>
+    		{{ tt.title1 }}<BR>
+          OWNER:{{ tt.usrr }}<br>
+    		DESCRIPTION: {{ tt.desc }}<BR>
+    		FINAL BID(in Rs): {{ tt.bid }}<BR>
+    		CATEGORY: {{ tt.cat }}<BR>
+    		 {% if tt.lnk %}
+             <img src="{{ tt.lnk }}"><BR>
+             {% else %}
+             IMAGE:No data.<br>
+             {% endif %}
+    		 BID WINNER: {{ win }}
+    		
+
+    	</li></div>
+    	
+    </ul>
+       <footer>
+     DESIGNED BY NAVEEN😎 
+        </footer>
+ 
+{% endblock %}

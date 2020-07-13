@@ -1,0 +1,118 @@
+{% extends "auctions/layout.html" %}
+{% block title %}
+{{ mk.title1 }}
+{% endblock %}
+{% block body %}
+<style type="text/css">
+	li,footer
+	{
+       color: black;
+       font-size: 20px;
+        font-family: "Times New Roman", Times, serif;
+	}
+	     
+	input
+	{
+		width: 50%;
+	display: block;
+	
+	margin-bottom: 15px;
+	font-size: 20px;
+	border: 2px solid #888;
+	border-bottom: 5px solid #888;
+	background-color: #fff;
+	
+	box-sizing: border-box;
+	
+	background:#ffffff28;
+	border:1px solid white;
+	padding:10px 20px;
+	color: black;
+	outline: none;
+	margin: 10px 0;
+	border-radius: 6px;
+	}
+	input:focus{
+	outline: none;
+	border: 2px solid #555;
+	border-bottom: 5px solid #555;
+}
+button
+{
+	width:10%;
+	padding:2px;
+	margin-top: 10px;
+	background-color: black;
+	color: #03e9f4;
+	display: inline-block;
+	border:none;
+	transition: 0.5s;
+	letter-spacing: 4px;
+	border-radius: 50px;
+	border:50px;
+	border-color: red;
+	
+}
+button:hover
+{
+	background: #03e9f4;
+	color: #050801;
+	box-shadow: 0 0 5px #03e9f4,
+	            0 0 25px #03e9f4,
+	            0 0 50px #03e9f4,
+	            0 0 200px #03e9f4
+}
+</style>
+    <div>
+    	<ul><div class="tt">
+    		<li>
+    	
+	{{ mk.title1 }}<br>
+	OWNER:{{ mk.usrr }}<br>
+	DESCRIPTION:{{ mk.desc }}<br>
+	CURRENT BID(in Rs):{{ mk.bid }}<br>
+	CATEGORY: {{ mk.cat }}<br>
+	CREATED ON:{{ mk.crt }}<br>
+	 <img src="{{ mk.lnk }}"><br></li></div>
+	</ul>
+	{% if u %}
+	<a href="/watchlist/{{ mk.id }}">ADD TO WATCHLIST</a>
+	
+	{% else %}
+	<a href="/remwatchlist/{{ mk.id }}">REMOVE FROM WATCHLIST</a>
+	{% endif %}
+	<form action="{% url 'bid1' mk.id %}" method="POST">
+		{% csrf_token %}
+	<input type="number" name="bids1" placeholder="Enter your bid">
+	
+	<button>Bid</button>
+</form>
+	<form action="{% url 'comm' mk.id %}" method="POST">
+		{% csrf_token %}
+	
+	<input type="text" name="cmnt" placeholder="Enter your comment">
+	<button>Comment</button>
+ <h4>{{ msg }}</h4>
+</form>
+{% if cls %}
+<a href="/win/{{mk.id }}">Close Bid</a>
+{% endif %}
+<div>
+	<h2>Comments</h2>
+	<ul>
+	{% for c in cm %}
+	<li>{{ c.usrs }}: 
+	{{ c.cmnt }}</li>
+	{% endfor %}
+</ul>
+</div>
+
+	
+</div>
+   <footer>
+     DESIGNED BY NAVEEN😎 
+        </footer>
+
+{% endblock %}
+
+

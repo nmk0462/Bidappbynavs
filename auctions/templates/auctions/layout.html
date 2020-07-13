@@ -1,0 +1,94 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Auctions{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+        <style type="text/css">
+            body
+{background: #EDE574;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #E1F5C4, #EDE574);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #E1F5C4, #EDE574); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+a
+{
+    position: relative;
+    display: inline-block;
+    padding: 15px 20px;
+    margin: 20px 0;
+    color: #c04848;
+    font-size: 24px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+    letter-spacing: 2px;
+    box-shadow: 3px 3px 3px 3px;
+
+}
+ul
+{
+     list-style-type: "👉";
+}
+    .tt
+    {  
+       color: black;
+       font-size: 20px;
+        font-family: "Times New Roman", Times, serif;
+         width: 530px;
+
+  margin:20px 0;
+   text-align: center;
+  border: 2px solid black;
+box-shadow: 3px 3px 6px 5px;
+box-sizing: border-box;
+    }
+
+        </style>
+    </head>
+    <body>
+        <h1>Auctions</h1>
+        <div > 
+            {% if user.is_authenticated %}
+                Signed in as&nbsp <strong>{{ user.username }}</strong>.<br>
+                 <a   href="/create">Create a new listing</a>
+                <a  href="/my">My Watchist</a>
+                <a href="/winners">Bids won by me :)</a>
+
+            {% else %}
+                Not signed in.
+            {% endif %}
+        </div>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link"  href="{% url 'index' %}">Active Listings</a>
+            </li>
+                <li class="nav-item">
+                <a class="nav-link"  href="{% url 'cate' %}">Categories</a>
+            </li>
+                  </li>
+                <li class="nav-item">
+                <a class="nav-link"  href="{% url 'start' %}">Intro</a>
+            </li>
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link"  href="{% url 'login' %}">Log In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  href="{% url 'register' %}">Register</a>
+                </li>
+             
+            {% endif %}
+        </ul>
+        <hr>
+
+        {% block body %}
+        
+        {% endblock %}
+    </body>
+</html>
